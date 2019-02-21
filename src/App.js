@@ -4,15 +4,16 @@ import Person from "./Person/Person";
 
 //useSate hook for managing state in function components
 const app = props => {
-  //**************** Method 1 *********************************
+  //**************** Method 2 *********************************
   const [initialPersonsState, updatePersonsState] = useState({
     persons: [
       { name: "vijay", age: 37 },
       { name: "arvind", age: 28 },
       { name: "chris", age: 56 }
-    ],
-    someOtherState: "some text"
+    ]
   });
+
+  const [initialOtherState, updateOtherState] = useState("some other text");
 
   const switchNameHandler = () => {
     updatePersonsState({
@@ -20,14 +21,13 @@ const app = props => {
         { name: "vijayanand", age: 37 }, //updating
         { name: "arvind", age: 28 },
         { name: "chris", age: 57 } //updating
-      ],
-      someOtherState: initialPersonsState.someOtherState //need to send this as updatePersonsState does not merge, unlike setState()
+      ]
     });
   };
 
   return (
     <div className="App">
-      <h1>Hi, I am a React App.</h1>
+      <h1>Hi, Am I a React App?</h1>
       <button onClick={switchNameHandler}>Switch name</button>
       <Person
         name={initialPersonsState.persons[0].name}
